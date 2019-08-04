@@ -1,11 +1,82 @@
 import React from 'react';
-import AnimatedPanResponder from "./src/AnimatedPanResponder";
-import SwipeGesture from "./src/swipegesture/SwipeGesture";
+import { createAppContainer, createStackNavigator } from 'react-navigation';
+import {
+  View,
+  TouchableOpacity,
+  FlatList,
+  Text,
+  StyleSheet,
+} from 'react-native';
 
-const App = () => {
-  return (
-    <SwipeGesture />
-  );
+import SwipeGesture from './src/swipegesture/SwipeGesture';
+import DraggableBox from './src/draggablebox/DraggableBox';
+import OpacityChangeExample from './src/opacitychangeexample/OpacityChangeExample';
+import OpacityToggleExample from './src/opacitytoggleexample/OpacityToggleExample';
+
+const ItemSeparator = () => <View style={styles.separator} />;
+
+const SCREENS = {
+  SwipeGesture: { screen: SwipeGesture, title: 'Swipe Gesture' },
+  OpacityChangeExample: { screen: OpacityChangeExample, title: 'Opacity Change' },
+  OpacityToggleExample: { screen: OpacityToggleExample, title: 'Opacity Toggle' },
+  DraggableBox: { screen: DraggableBox, title: 'Draggable Box' },
 };
 
-export default App;
+class MainScreen extends React.Component {
+  static navigationOptions = {
+    title: '✌️ Reanimated and Gesture Handler Demo',
+  };
+
+  onPressNavigateToPage = (item) => {
+    const { navigation } = this.props;
+    navigation.navigate(item.key);
+  }
+
+  render() {
+    const data = Object.keys(SCREENS).map(key => ({ key }));
+    return (
+      <FlatList
+        data={data}
+        ItemSeparatorComponent={ItemSeparator}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => this.onPressNavigateToPage(item)}
+          >
+            <Text style={styles.buttonText}>{SCREENS[item.key].title || item.key}</Text>
+          </TouchableOpacity>
+        )}
+      />
+    );
+  }
+}
+
+const App = createStackNavigator(
+  {
+    Main: { screen: MainScreen },
+    ...SCREENS,
+  },
+);
+
+const styles = StyleSheet.create({
+  list: {
+    backgroundColor: '#EFEFF4',
+  },
+  separator: {
+    height: 1,
+    backgroundColor: '#DBDBE0',
+  },
+  buttonText: {
+    backgroundColor: 'transparent',
+  },
+  button: {
+    flex: 1,
+    height: 60,
+    padding: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+});
+
+export default createAppContainer(App);

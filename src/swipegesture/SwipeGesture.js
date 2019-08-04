@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import {
-  View, Text, SafeAreaView, FlatList, StyleSheet, Alert,
+  SafeAreaView, FlatList, StyleSheet, Alert,
 } from 'react-native';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 import quotes from './quotes';
 import ListItem, { Separator } from './ListItem';
 
 class SwipeGesture extends Component {
+  static navigationOptions = {
+    title: 'Swipe Gesture',
+  };
+
   renderFlatListItem = ({ item }) => {
     return (
       <ListItem
