@@ -13,6 +13,7 @@ import DraggableBox from './src/draggablebox/DraggableBox';
 import OpacityChangeExample from './src/opacitychangeexample/OpacityChangeExample';
 import OpacityToggleExample from './src/opacitytoggleexample/OpacityToggleExample';
 import CollapsibleScrollViewHeader from './src/collapsiblescrollviewheader/CollapsibleScrollViewHeader';
+import CollapsibleNavHeaderWithSnap from './src/collapsiblenavheaderwithsnap/CollapsibleNavHeaderWithSnap';
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
@@ -55,7 +56,7 @@ class MainScreen extends React.Component {
 
 const App = createStackNavigator(
   {
-    CollapsibleScrollViewHeader: { screen: CollapsibleScrollViewHeader },
+    CollapsibleNavHeaderWithSnap: { screen: CollapsibleNavHeaderWithSnap },
     // Main: { screen: MainScreen },
     // ...SCREENS,
   },
