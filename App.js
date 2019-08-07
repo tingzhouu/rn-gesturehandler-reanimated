@@ -12,6 +12,7 @@ import SwipeGesture from './src/swipegesture/SwipeGesture';
 import DraggableBox from './src/draggablebox/DraggableBox';
 import OpacityChangeExample from './src/opacitychangeexample/OpacityChangeExample';
 import OpacityToggleExample from './src/opacitytoggleexample/OpacityToggleExample';
+import CollapsibleScrollViewHeader from './src/collapsiblescrollviewheader/CollapsibleScrollViewHeader';
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
@@ -20,6 +21,7 @@ const SCREENS = {
   OpacityChangeExample: { screen: OpacityChangeExample, title: 'Opacity Change' },
   OpacityToggleExample: { screen: OpacityToggleExample, title: 'Opacity Toggle' },
   DraggableBox: { screen: DraggableBox, title: 'Draggable Box' },
+  CollapsibleScrollViewHeader: { screen: CollapsibleScrollViewHeader, title: 'Collapsible ScrollView Header' },
 };
 
 class MainScreen extends React.Component {
@@ -53,8 +55,9 @@ class MainScreen extends React.Component {
 
 const App = createStackNavigator(
   {
-    Main: { screen: MainScreen },
-    ...SCREENS,
+    CollapsibleScrollViewHeader: { screen: CollapsibleScrollViewHeader },
+    // Main: { screen: MainScreen },
+    // ...SCREENS,
   },
 );
 

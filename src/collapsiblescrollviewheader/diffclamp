@@ -1,0 +1,45 @@
+In the example, we are tracking the current y value in the scrollview.
+As we scroll down, the y value increases.
+The range of y value is 0 to infinity.
+0 because we have a limit when scrolling up the list.
+infinity because y value depends on the length of our list, which can be infinitely long.
+
+Diffclamp calculation = PREVIOUS_OUTPUT + CURRENT_INPUT - PREVIOUS_INPUT, and limited to the specified range.
+PREVIOUS_OUTPUT - refers to the most recently calculated value from Diffclamp calculation
+CURRENT_INPUT and PREVIOUS_INPUT - refer to the y value input from scrollview.
+
+
+At the very beginning, PREVIOUS_OUTPUT = 0, PREVIOUS_INPUT = 0, current y value of ScrollView = 0
+For this example, let's specify the range of our output to be within 0 and 15.
+
+1. Scroll down from y = 0 to y = 15
+OUTPUT = 0 + 15 - 0
+       = 15
+
+2. Scroll down from y = 15 to y = 16
+OUTPUT = 15 + 16 - 15
+       = 16 before capping range
+       = 15 after capping range
+
+3. Scroll down from y = 16 to y = 255
+OUTPUT = 15 + 255 - 16
+       = 254 before capping range
+       = 15 after capping range
+
+However, should we start to scroll up instead, our output will start to decrease immediately,
+regardless of how far we have scrolled down.
+
+4. Scroll up from y = 255 to y = 254
+OUTPUT = 15 + 254 - 155
+       = 14
+
+As we continue to scroll up, any further scrolling will limit the value to our minimum output
+of 0 which we set earlier.
+
+5. Scroll up from y = 254 to y = 130
+OUTPUT = 14 + 130 - 254
+       = -110 before capping range
+       = 0 after capping range
+
+Credits to https://medium.com/@andi.gu.ca/a-collapsing-navbar-with-tabs-in-react-native-e80790588830
+for diffclamp explanation
