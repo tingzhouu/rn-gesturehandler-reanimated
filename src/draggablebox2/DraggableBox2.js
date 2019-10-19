@@ -33,21 +33,21 @@ class DraggableBox extends Component {
     super(props);
 
     const gestureX = new Value(0);
-    // const gestureY = new Value(0);
+    const gestureY = new Value(0);
     const stateOfGesture = new Value(-1);
 
     this._onGestureEvent = event([
       {
         nativeEvent: {
           translationX: gestureX,
-          // translationY: gestureY,
+          translationY: gestureY,
           state: stateOfGesture,
         },
       },
     ]);
 
     this._transX = interaction(gestureX, stateOfGesture);
-    // this._transY = interaction(gestureY, stateOfGesture);
+    this._transY = interaction(gestureY, stateOfGesture);
   }
 
   render() {
@@ -63,7 +63,7 @@ class DraggableBox extends Component {
               {
                 transform: [{
                   translateX: this._transX,
-                  // translateY: this._transY,
+                  translateY: this._transY,
                 }],
               },
             ]}
