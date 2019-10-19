@@ -14,6 +14,7 @@ import OpacityChangeExample from './src/opacitychangeexample/OpacityChangeExampl
 import OpacityToggleExample from './src/opacitytoggleexample/OpacityToggleExample';
 import CollapsibleScrollViewHeader from './src/collapsiblescrollviewheader/CollapsibleScrollViewHeader';
 import CollapsibleNavHeaderWithSnap from './src/collapsiblenavheaderwithsnap/CollapsibleNavHeaderWithSnap';
+import CollapsibleHeader from './src/collapsibleheader/CollapsibleHeader';
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
