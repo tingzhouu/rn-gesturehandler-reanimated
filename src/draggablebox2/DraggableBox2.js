@@ -16,7 +16,7 @@ function interaction(gestureTranslation, gestureState) {
     eq(gestureState, State.ACTIVE),
     // if state is active
     [
-      cond(dragging, [set(dragging, 1), set(start, position)]),
+      cond(dragging, 0, [set(dragging, 1), set(start, position)]),
       set(position, add(start, gestureTranslation)),
     ],
     // if state is NOT active
@@ -55,7 +55,7 @@ class DraggableBox extends Component {
       <View style={styles.main}>
         <PanGestureHandler
           onGestureEvent={this._onGestureEvent}
-          onHandlerStateChange={this.onGestureEvent}
+          onHandlerStateChange={this._onGestureEvent}
         >
           <Animated.View
             style={[
