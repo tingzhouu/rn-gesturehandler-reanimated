@@ -10,6 +10,7 @@ import {
 
 import SwipeGesture from './src/swipegesture/SwipeGesture';
 import DraggableBox from './src/draggablebox/DraggableBox';
+import DraggableBox2 from './src/draggablebox2/DraggableBox2';
 import OpacityChangeExample from './src/opacitychangeexample/OpacityChangeExample';
 import OpacityToggleExample from './src/opacitytoggleexample/OpacityToggleExample';
 import CollapsibleScrollViewHeader from './src/collapsiblescrollviewheader/CollapsibleScrollViewHeader';
@@ -57,7 +58,7 @@ class MainScreen extends React.Component {
 
 const App = createStackNavigator(
   {
-    CollapsibleNavHeaderWithSnap: { screen: CollapsibleNavHeaderWithSnap },
+    DraggableBox2: { screen: DraggableBox2 },
     // Main: { screen: MainScreen },
     // ...SCREENS,
   },
