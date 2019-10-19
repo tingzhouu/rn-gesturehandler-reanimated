@@ -26,7 +26,7 @@ function interaction(gestureTranslation, gestureState) {
 
 class DraggableBox extends Component {
   static navigationOptions = {
-    title: 'Falling Box',
+    title: 'Draggable Box 2',
   };
 
   constructor(props) {
